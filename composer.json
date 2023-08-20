@@ -11,7 +11,8 @@
     }],
     "require": {
         "silverstripe/framework": "4.* | 5.*",
-        "dnadesign/silverstripe-elemental-userforms": "*"
+        "dnadesign/silverstripe-elemental-userforms": "*",
+        "silverstripers/udf-spam-protection": "*"
     },
     "extra": {
         "expose": [

@@ -1,0 +1,6 @@
+---
+Name: 'forms-manager-extensions'
+---
+SilverStripe\UserForms\Model\Submission\SubmittedForm:
+  extensions:
+    - SilverStripers\SubmissionsManager\Extension\SubmittedFormExtension
