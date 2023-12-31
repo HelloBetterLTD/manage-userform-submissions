@@ -1,5 +1,5 @@
 {
-    "name": "silverstripers/form-submission-manager",
+    "name": "hellobetter/form-submission-manager",
     "description": "Manage user forms submissions",
     "type": "silverstripe-vendormodule",
     "keywords": ["silverstripe", "forms", "module"],
