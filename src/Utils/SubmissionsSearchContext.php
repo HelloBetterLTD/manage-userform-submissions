@@ -23,13 +23,15 @@ class SubmissionsSearchContext extends SearchContext
     public function getParentsSources()
     {
         $parentsList = [];
-        /* @var $parent DataObject */
-        foreach ($this->parentList as $parent) {
-            $parentsList[sprintf('%s (%s)', $parent->singular_name(), $parent->ID)] = sprintf(
-                '%s - (%s)',
-                $parent->getTitle(),
-                $parent->singular_name()
-            );
+        if ($this->parentList) {
+            /* @var $parent DataObject */
+            foreach ($this->parentList as $parent) {
+                $parentsList[sprintf('%s (%s)', $parent->singular_name(), $parent->ID)] = sprintf(
+                    '%s - (%s)',
+                    $parent->getTitle(),
+                    $parent->singular_name()
+                );
+            }
         }
         return $parentsList;
     }

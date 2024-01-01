@@ -13,9 +13,6 @@ class SubmissionsFilterHeader extends GridFieldFilterHeader
     {
         if (!$this->searchContext) {
             $this->searchContext = SubmissionsSearchContext::create(SubmittedForm::class);
-            if ($this->updateSearchContextCallback) {
-                call_user_func($this->updateSearchContextCallback, $this->searchContext);
-            }
         }
         return $this->searchContext;
     }

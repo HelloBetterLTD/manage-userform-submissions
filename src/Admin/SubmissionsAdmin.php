@@ -73,12 +73,9 @@ class SubmissionsAdmin extends ModelAdmin
 
             // update search contexts
             $config->removeComponentsByType(GridFieldFilterHeader::class);
-            $config->addComponent(Injector::inst()->createWithArgs(SubmissionsFilterHeader::class, [
-                false,
-                function ($context) {
-                    $this->updateSearchContext($context);
-                }
-            ]));
+            $config->addComponent($filterHeader = SubmissionsFilterHeader::create());
+            $searchContext = $filterHeader->getSearchContext($grid);
+            $this->updateSearchContext($searchContext);
 
             /* @var $detailForm GridFieldDetailForm */
             $detailForm = $config->getComponentByType(GridFieldDetailForm::class);
@@ -126,7 +123,7 @@ class SubmissionsAdmin extends ModelAdmin
     {
         $list = ArrayList::create();
         $query = DB::query('SELECT DISTINCT "ParentClass", "ParentID" FROM "SubmittedForm"');
-        while ($row = $query->nextRecord()) {
+        foreach ($query as $row) {
             if ($record = DataList::create($row['ParentClass'])->byID($row['ParentID'])) {
                 $list->push($record);
             }
@@ -159,6 +156,7 @@ SQL;
             $insColumns = DB::query($columnSQL)->map();
             $columns = array_merge($columns, $insColumns);
         }
+
 
         return $columns;
     }
