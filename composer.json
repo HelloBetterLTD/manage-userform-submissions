@@ -15,10 +15,6 @@
         "silverstripers/udf-spam-protection": "*"
     },
     "extra": {
-        "expose": [
-            "client/dist",
-            "client/lang"
-        ],
         "installer-name": "form-submission-manager"
     },
     "autoload": {
